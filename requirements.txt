@@ -2,3 +2,4 @@ diffusers==0.31.0
 fastapi==0.115.4
 opencv_python==4.10.0.84
 Pillow==10.1.0
+uvicorn==0.22.0
