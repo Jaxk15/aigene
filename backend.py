@@ -10,19 +10,16 @@ import uuid
 app = FastAPI()
 
 # Load pre-trained model (ensure this model is set up)
-# model = StableDiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4")
+model = StableDiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4")
 
 # Directory to save generated videos
 OUTPUT_DIR = "generated_videos"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-# Placeholder function for image generation using a prompt
 def generate_images(prompt: str, num_images: int = 10):
     images = []
     for i in range(num_images):
-        # In actual use, this would generate an image from the model
-        # image = model(prompt).images[0]  # Generate image from the model
-        image = Image.new("RGB", (512, 512), (i * 20, i * 10, i * 5))  # Placeholder image
+        image = model(prompt).images[0]  # Generate image from the model
         img_path = f"{OUTPUT_DIR}/{uuid.uuid4().hex}_{i}.png"
         image.save(img_path)
         images.append(img_path)
